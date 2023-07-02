@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sign_google.dart';
-
+import 'AppStringRes.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Image.asset('assets/logo.png'),),
 
                 const SizedBox(height: 50),
-                const Text('Continue with..'),
+                const Text(continueWith),
 
 
 
