@@ -1,4 +1,5 @@
-import 'package:community/login_screen.dart';
+
+import 'package:community/view/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

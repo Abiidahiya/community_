@@ -1,6 +1,9 @@
+
+
+
 import 'package:flutter/material.dart';
-import 'sign_google.dart';
-import 'AppStringRes.dart';
+import '../../view_model/sign_google.dart';
+import '../../model/app_string_res.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -24,31 +27,19 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text('Welcome to the vegan community.'),
+                const Text(welcome),
+                const SizedBox(height: 50,),
                 SizedBox(height: 200, width: 200,
-                  child: Image.asset('assets/logo.png'),),
+                  child: Image.asset('assets/images/ic_main_logo.png'),),
 
                 const SizedBox(height: 50),
                 const Text(continueWith),
 
 
 
-                ElevatedButton(
-                    style:ElevatedButton.styleFrom(),
-                    onPressed: (){
-
-                    }, child: const Text('Facebook ')),
-                ElevatedButton(
-                    style:ElevatedButton.styleFrom(),
-                    onPressed: (){
-                      signInWithGoogle();
-                      },
-                    child: const Text('Google')),
-                ElevatedButton(
-                    style:ElevatedButton.styleFrom(),
-                    onPressed: (){
-
-                    }, child: const Text('Instagram')),
+                facebookButton,
+                googleButton,
+                instagramButton,
 
               ],
             ),
