@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const Text('Welcome to the vegan community.'),
                 SizedBox(height: 200, width: 200,
-                  child: Image.asset('assets/logo.png'),),
+                  child: Image.asset('assets/images/logo.png'),),
 
                 const SizedBox(height: 50),
                 const Text('Continue with..'),

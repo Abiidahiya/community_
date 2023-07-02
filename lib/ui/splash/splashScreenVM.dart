@@ -8,12 +8,11 @@ class SplashScreenViewModel extends GetxController
     with GetSingleTickerProviderStateMixin {
 
   @override
-  void onInit() {
-    Timer(Duration(seconds: 2), (){
-      Get.toNamed('LoginScreen()');
-    },
-    );
-    super.onInit();
+  void onReady(){
+    super.onReady();
+    Future.delayed(Duration(seconds: 3), () {
+      Get.off(LoginScreen());
+    });
 
 
   }
