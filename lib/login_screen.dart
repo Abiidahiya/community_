@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Image.asset('assets/logo.png'),),
 
                 const SizedBox(height: 50),
-                const Text('Continue with..'),
+                const Text('Continue with...'),
 
 
 
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: (){
                       signInWithGoogle();
                       },
-                    child: const Text('Google')),
+                    child: const Text('Google ')),
                 ElevatedButton(
                     style:ElevatedButton.styleFrom(),
                     onPressed: (){
