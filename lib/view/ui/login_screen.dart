@@ -1,9 +1,9 @@
 
 
 
+import 'package:community/reusable/rounded_button.dart';
 import 'package:flutter/material.dart';
-import '../../view_model/sign_google.dart';
-import '../../model/app_string_res.dart';
+import '../../utils/app_string_res.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -37,9 +37,28 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-                facebookButton,
-                googleButton,
-                instagramButton,
+                Container(width: 150,
+                  child: const RoundedButton(btnName: 'Google',
+                    icon: Icon(Icons.accessibility),
+                    textStyle: TextStyle(color: Colors.white ),
+                    bgColor: Colors.green,
+                  ),
+                ),
+                Container(width: 150,
+                  child: const RoundedButton(btnName: 'Facebook',
+                    icon: Icon(Icons.account_box_rounded),
+                    textStyle: TextStyle(color: Colors.white ),
+                  ),
+                ),
+                Container(width: 150,
+                  child: const RoundedButton(btnName: 'Instagram',
+                  icon: Icon(Icons.camera_alt),
+                    textStyle: TextStyle(color: Colors.white ),
+                    bgColor: Colors.redAccent,
+                  ),
+                ),
+
+
 
               ],
             ),
