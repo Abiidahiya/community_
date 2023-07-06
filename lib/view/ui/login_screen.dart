@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
                 RoundedButton(btnName: google,
-                  icon: Icon(Icons.accessibility),
+                  icon: Icon(Icons.account_circle),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor:green ,
                 ),
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   bgColor:blue,
                 ),
                 RoundedButton(btnName: instagram,
-                  icon: Icon(Icons.accessibility),
+                  icon: Icon(Icons.camera_alt),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor: red,
                 ),

@@ -23,7 +23,7 @@ class RoundedButton extends StatelessWidget{
       style: ElevatedButton.styleFrom(
         backgroundColor: bgColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))
+          borderRadius: BorderRadius.all(Radius.circular(10))
         )
       ),
           child: icon!=null ? Row(
