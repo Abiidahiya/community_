@@ -1,9 +1,10 @@
 
 
 
-import 'package:community/reusable/uicomponents/button/roundedbutton.dart';
+import 'package:community/uicomponents/button/roundedbutton.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app_string_res.dart';
+import 'package:community/utils/color.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -45,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 RoundedButton(btnName: facebook,
                   icon: Icon(Icons.accessibility),
                   textStyle: TextStyle(color: Colors.white ),
-                  bgColor: Colors.blueAccent,
+                  bgColor: Colors.blue,
                 ),
                 RoundedButton(btnName: instagram,
                   icon: Icon(Icons.accessibility),
