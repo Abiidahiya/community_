@@ -1,7 +1,7 @@
 
 
 
-import 'package:community/reusable/rounded_button.dart';
+import 'package:community/reusable/uicomponents/button/roundedbutton.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app_string_res.dart';
 class LoginScreen extends StatefulWidget {
@@ -37,25 +37,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-                Container(width: 150,
-                  child: const RoundedButton(btnName: 'Google',
-                    icon: Icon(Icons.accessibility),
-                    textStyle: TextStyle(color: Colors.white ),
-                    bgColor: Colors.green,
-                  ),
+                RoundedButton(btnName: google,
+                  icon: Icon(Icons.accessibility),
+                  textStyle: TextStyle(color: Colors.white ),
+                  bgColor: Colors.green,
                 ),
-                Container(width: 150,
-                  child: const RoundedButton(btnName: 'Facebook',
-                    icon: Icon(Icons.account_box_rounded),
-                    textStyle: TextStyle(color: Colors.white ),
-                  ),
+                RoundedButton(btnName: facebook,
+                  icon: Icon(Icons.accessibility),
+                  textStyle: TextStyle(color: Colors.white ),
+                  bgColor: Colors.blueAccent,
                 ),
-                Container(width: 150,
-                  child: const RoundedButton(btnName: 'Instagram',
-                  icon: Icon(Icons.camera_alt),
-                    textStyle: TextStyle(color: Colors.white ),
-                    bgColor: Colors.redAccent,
-                  ),
+                RoundedButton(btnName: instagram,
+                  icon: Icon(Icons.accessibility),
+                  textStyle: TextStyle(color: Colors.white ),
+                  bgColor: Colors.deepOrange,
                 ),
 
 
