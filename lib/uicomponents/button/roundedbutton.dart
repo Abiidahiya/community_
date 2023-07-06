@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
-
+import 'package:community/utils/dimen.dart';
 
 class RoundedButton extends StatelessWidget{
   final String btnName;
@@ -16,7 +16,7 @@ class RoundedButton extends StatelessWidget{
 
       @override
   Widget build(BuildContext context) {
-    return Container(width: 150,
+    return Container(width: Dimen_150,
       child: ElevatedButton(
           onPressed:(){callback!();
             },

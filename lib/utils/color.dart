@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color red= Colors.redAccent;
-Color blue= Colors.lightBlue;
-Color green= Colors.green;
+const red=Colors.redAccent;
+const blue=Colors.blueAccent;
+const green=Colors.greenAccent;
+
