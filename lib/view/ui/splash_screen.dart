@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:community/utils/color.dart';
 import 'package:community/utils/dimen.dart';
 import 'package:community/view_model/splash_controller.dart';
+import 'package:community/uicomponents/images.dart';
+import 'package:community/utils/font_size_constants.dart';
 
 class SplashScreen extends StatelessWidget {
 
@@ -16,10 +18,10 @@ class SplashScreen extends StatelessWidget {
             Container(width: Dimen_200, height: Dimen_300,
                 child: Column(
                   children: [
-                    Image.asset('assets/images/ic_splash_logo.png'),
-                    const SizedBox(height: 50),
+                    Image.asset(Images.mainLogo),
+                    const SizedBox(height: Dimen_50),
                     const Text(welcomeSpl,
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: mediumFontSize, fontWeight: FontWeight.bold),
                     ),
                   ],
                 )
