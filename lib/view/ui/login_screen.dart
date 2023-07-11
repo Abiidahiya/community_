@@ -32,11 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const Text(welcome),
                 const SizedBox(height: Dimen_50,),
-                SizedBox(height: 200, width: 200,
+                SizedBox(height: Dimen_200, width: Dimen_200,
                   child: Image.asset(Images.mainLogo),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: Dimen_50),
                 const Text(continueWith),
 
 
