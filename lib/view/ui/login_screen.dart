@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import '../../utils/app_string_res.dart';
 import 'package:community/utils/color.dart';
 import 'package:community/uicomponents/images.dart';
+import 'package:community/view_model/sign_facebook.dart';
+import 'package:get/get.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final FacebookLoginController facebookLoginController = Get.put(FacebookLoginController());
 
 
 
@@ -50,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   icon: Icon(Icons.accessibility),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor:blue,
-                  onPressed: () {},
+                  onPressed: facebookLoginController.loginWithFacebook,
                 ),
                 RoundedButton(btnName: instagram,
                   icon: Icon(Icons.camera_alt),
