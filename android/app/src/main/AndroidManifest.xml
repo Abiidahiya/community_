@@ -47,11 +47,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="225746623757477"/>
-       <meta-data android:name="com.facebook.sdk.ClientToken" android:value="0ce9f5bb60ccccb4c5445cc65c378be1"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+     <uses-permission android:name="android.permission.INTERNET"/>
+     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
 
 
 </manifest>

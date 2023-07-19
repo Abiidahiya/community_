@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-
+import 'package:community/view/ui/home_page.dart';
 class FacebookLoginController extends GetxController {
   RxBool isLoading = false.obs;
 
@@ -16,17 +16,15 @@ class FacebookLoginController extends GetxController {
         final AccessToken? accessToken = result.accessToken;
 
         if (accessToken != null) {
-          // Access token is not null, perform further actions
-          // TODO: Add your logic here
+
+          Get.off(HomePage);
+
         } else {
-          // Access token is null
           Get.snackbar('Error', 'Failed to get access token');
         }
       } else if (result.status == LoginStatus.cancelled) {
-        // User cancelled the login process
         Get.snackbar('Cancelled', 'Facebook login cancelled');
       } else {
-        // Login failed for some reason
         Get.snackbar('Error', 'Facebook login failed');
       }
     } catch (e) {
