@@ -10,7 +10,8 @@ class FacebookLoginController extends GetxController {
     try {
       isLoading.value = true;
 
-      final LoginResult result = await FacebookAuth.instance.login();
+      final LoginResult result = await FacebookAuth.instance.login(
+          permissions: ['email']);
 
       if (result.status == LoginStatus.success) {
         final AccessToken? accessToken = result.accessToken;
@@ -34,4 +35,5 @@ class FacebookLoginController extends GetxController {
       isLoading.value = false;
     }
   }
+
 }
