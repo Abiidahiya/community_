@@ -2,9 +2,14 @@
 
 
 import 'package:community/uicomponents/button/roundedbutton.dart';
+import 'package:community/utils/dimen.dart';
+import 'package:community/view_model/sign_google.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app_string_res.dart';
 import 'package:community/utils/color.dart';
+import 'package:community/uicomponents/images.dart';
+import 'package:community/view_model/sign_facebook.dart';
+import 'package:get/get.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -13,27 +18,27 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final FacebookLoginController facebookLoginController = Get.put(FacebookLoginController());
 
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('login'),
-        ),
+
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: Dimen_10),
           child: Center(
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(welcome),
-                const SizedBox(height: 50,),
-                SizedBox(height: 200, width: 200,
-                  child: Image.asset('assets/images/ic_main_logo.png'),),
+                const SizedBox(height: Dimen_50,),
+                SizedBox(height: Dimen_200, width: Dimen_200,
+                  child: Image.asset(Images.mainLogo),
+                ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: Dimen_50),
                 const Text(continueWith),
 
 
@@ -42,16 +47,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   icon: Icon(Icons.account_circle),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor:green ,
+                  onPressed: signInWithGoogle,
                 ),
                 RoundedButton(btnName: facebook,
                   icon: Icon(Icons.accessibility),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor:blue,
+                  onPressed: facebookLoginController.loginWithFacebook,
                 ),
                 RoundedButton(btnName: instagram,
                   icon: Icon(Icons.camera_alt),
                   textStyle: TextStyle(color: Colors.white ),
                   bgColor: red,
+                  onPressed: () {},
                 ),
 
 

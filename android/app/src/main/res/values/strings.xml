@@ -1,0 +1,7 @@
+
+    <resources>
+        <string name="app_name">community</string>
+    <string name="facebook_app_id">225746623757477</string>
+    <string name="fb_login_protocol_scheme">fb225746623757477</string>
+    <string name="facebook_client_token">0a470be0e70d729c829865fe9cebcfe3</string>
+    </resources>
