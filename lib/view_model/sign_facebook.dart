@@ -1,9 +1,9 @@
 
-import 'package:community/view/ui/bottom_navigation_screen.dart';
+import 'package:community/view/ui/dashboardui_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:community/view/ui/profile_page.dart';
+import 'package:community/view/ui/userprofile/profile_page.dart';
 class FacebookLoginController extends GetxController {
   RxBool isLoading = false.obs;
 
@@ -19,7 +19,7 @@ class FacebookLoginController extends GetxController {
 
         if (accessToken != null) {
 
-          Get.off(BottomNavigationScreen);
+          Get.off(DashboardUI());
 
         } else {
           Get.snackbar('Error', 'Failed to get access token');

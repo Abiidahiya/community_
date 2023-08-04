@@ -20,22 +20,27 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body:Center(
-          child: Column(
-            children: [
-              SizedBox(height: Dimen_300),
-              const Text(profileMessage,style: TextStyle(fontSize: largeFontSize)),
-              RoundedButton(btnName:logout,
-                textStyle: const TextStyle(color: white ),
-                bgColor:cyan,
-                onPressed: () => _logoutController.logout(),
-
-              ),
-            ],
-          ),
-        )
-
+      appBar: AppBar(
+        title: const Text(profilePage),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(profileMessage, style: TextStyle(fontSize: largeFontSize)),
+            const SizedBox(height: Dimen_20),
+            RoundedButton(
+              btnName: logout,
+              textStyle: const TextStyle(color: white),
+              bgColor: cyan,
+              onPressed: () => _logoutController.logout(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+
+
+
