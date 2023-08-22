@@ -1,6 +1,7 @@
 
 import 'package:community/view/ui/login_screen.dart';
 import 'package:community/view/ui/splash_screen.dart';
+import 'package:community/view/ui/userdatawizard/wizard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: WizardPage(),
     );
   }
 }

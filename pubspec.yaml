@@ -36,6 +36,8 @@ dependencies:
   http: ^1.1.0
   google_maps_flutter: ^2.4.0
   location: ^5.0.0
+  image_picker: ^1.0.2
+  flutter_wizard: ^2.0.5
 
 
 
