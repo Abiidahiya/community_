@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:community/view_model/logout_all.dart';
 
+
 void main() async {WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 Get.put(LogoutController());

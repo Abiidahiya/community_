@@ -7,6 +7,7 @@ import 'package:community/view/ui/userdatawizard/personalinfo_page.dart';
 import 'package:community/view/ui/userdatawizard/useraddress_page.dart';
 
 
+
 class WizardPage extends StatelessWidget {
   final UserWizardController wizardController = Get.put(UserWizardController());
 
@@ -22,7 +23,6 @@ class WizardPage extends StatelessWidget {
             child: IndexedStack(
               index: wizardController.currentStep.value,
               children: [
-
                 PersonalInfoPage(),
                 UserAddressPage(),
                 UserBioPage(),
