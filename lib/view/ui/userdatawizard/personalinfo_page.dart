@@ -4,6 +4,8 @@ import 'package:community/view_model/userwizard/wizard_controller.dart';
 import 'package:community/utils/app_string_res.dart';
 import 'package:community/utils/dimen.dart';
 import 'package:community/view_model/userwizard/personalinfo_controller.dart';
+import 'package:community/uicomponents/apptextformfield.dart';
+import 'package:community/utils/validators.dart';
 
 
 
@@ -36,39 +38,28 @@ class PersonalInfoPage extends StatelessWidget {
                   ? Image.file(controller.selectedImage.value!)
                   : Container();
             }),
-            TextFormField(
+            AppTextFormField(
               key: Key('firstNameField'),
               controller: controller.firstNameController,
-              decoration: const InputDecoration(labelText: firstname),
-              validator: (value) {
-                if (value!.isEmpty ||!RegExp(r'^[a-z A-Z]').hasMatch(value!)) {
-                  return firstnameerror;
-                }
-                return null;
-              },
+                label: 'First Name',
+              validator: Validators.firstNameValidator,
             ),
-            TextFormField(
+            SizedBox(height: Dimen_12,),
+            AppTextFormField(
               key: Key('lastNameField'),
               controller: controller.lastNameController,
-              decoration: const InputDecoration(labelText: lastname),
-              validator: (value) {
-                if (value!.isEmpty ||!RegExp(r'^[a-z A-Z]').hasMatch(value!)) {
-                  return lastnameerror;
-                }
-                return null;
-              },
+              label: lastname,
+              validator: Validators.lastNameValidator,
+
             ),
-            TextFormField(
+            SizedBox(height: Dimen_12,),
+            AppTextFormField(
               key: Key('emailField'),
               controller: controller.emailController,
-              decoration: const InputDecoration(labelText: email),
-              validator: (value) {
-                if (value!.isEmpty ||!RegExp(r'^[\w-\.]+@([\w-]+\.)+[a-z A-Z]{2,4}$').hasMatch(value!)) {
-                  return emailerror;
-                }
-                return null;
-              },
+              label: email,
+              validator: Validators.emailValidator,
             ),
+            SizedBox(height: Dimen_12,),
             ElevatedButton(
               key: Key('nextButton'),
               onPressed: () {

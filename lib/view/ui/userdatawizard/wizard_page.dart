@@ -22,6 +22,7 @@ class WizardPage extends StatelessWidget {
             child: IndexedStack(
               index: wizardController.currentStep.value,
               children: [
+
                 PersonalInfoPage(),
                 UserAddressPage(),
                 UserBioPage(),

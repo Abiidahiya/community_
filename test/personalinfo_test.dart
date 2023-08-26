@@ -23,9 +23,9 @@ void main() {
     await tester.pump();
 
 
-    expect(find.text('Please enter valid first name'), findsOneWidget);
-    expect(find.text('Please enter valid last name'), findsOneWidget);
-    expect(find.text('Please enter valid email'), findsOneWidget);
+    expect(find.text('Please enter a valid first name'), findsOneWidget);
+    expect(find.text('Please enter a valid last name'), findsOneWidget);
+    expect(find.text('Please enter a valid email'), findsOneWidget);
 
 
     await tester.enterText(firstNameField, '123');
@@ -35,9 +35,9 @@ void main() {
     await tester.pump();
 
 
-    expect(find.text('Please enter valid first name'), findsOneWidget);
-    expect(find.text('Please enter valid last name'), findsOneWidget);
-    expect(find.text('Please enter valid email'), findsOneWidget);
+    expect(find.text('Please enter a valid first name'), findsOneWidget);
+    expect(find.text('Please enter a valid last name'), findsOneWidget);
+    expect(find.text('Please enter a valid email'), findsOneWidget);
 
 
     await tester.enterText(firstNameField, 'John');

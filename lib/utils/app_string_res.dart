@@ -22,13 +22,21 @@ const lastname='Last Name';
 const email='Enter Email';
 const imagepickertext='Select Image';
 const next='Next Page';
-const firstnameerror='Please enter valid first name';
-const lastnameerror='Please enter valid last name';
-const emailerror='Please enter valid email';
+const firstnameerror='Please enter a valid first name';
+const lastnameerror='Please enter a valid last name';
+
+const emailerror='Please enter a valid email';
 const address='Enter address manually';
 const bio='Enter your bio';
 const bioerror='Please enter a valid bio';
 const submit='Submit';
+const address1='Address';
+const village='Village';
+const town='Town/City';
+const state='State';
+const country='Country';
+const biopage='Bio Page';
+
 
 
 

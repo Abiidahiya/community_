@@ -4,48 +4,41 @@ import 'package:get/get.dart';
 import 'package:community/view_model/userwizard/wizard_controller.dart';
 import 'package:community/view_model/userwizard/userbio_controller.dart';
 import 'package:community/utils/app_string_res.dart';
+import 'package:community/uicomponents/apptextformfield.dart';
+import 'package:community/utils/validators.dart';
 
 
 class UserBioPage extends StatelessWidget {
   final UserWizardController wizardController = Get.put(UserWizardController());
   final UserBioController bioController = Get.put(UserBioController());
 
-  final _formKey = GlobalKey<FormState>(); // Create a GlobalKey<FormState>
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bio Page'),
+        title: Text(biopage),
         backgroundColor: Colors.blueAccent,
       ),
       body: Form(
-        key: _formKey, // Associate the GlobalKey with the Form
+        key: _formKey,
         child: Column(
           children: [
             SizedBox(height: Dimen_50,),
-            TextFormField(
+            AppTextFormField(
               key: Key('bioField'),
-              controller: bioController.userBioTextController, // Corrected this line
+              controller: bioController.userBioTextController,
               maxLines: 7,
-              decoration: InputDecoration(
-                labelText: 'Bio',
-                hintText: bio,
-                border: OutlineInputBorder(),
-              ),
-              validator: (value) {
-                if (value!.isEmpty ||!RegExp(r'^[a-zA-Z0-9\s.,!?()]*$').hasMatch(value)) {
-                  return bioerror;
-                }
-                return null;
-              },
+              label: bio,
+              validator: Validators.bioValidator,
             ),
             SizedBox(height: Dimen_100,),
             ElevatedButton(
               key: Key('submitButton'),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // Validation successful, you can perform additional actions here
+
                 }
               },
               child: Text(submit),
