@@ -6,3 +6,7 @@ const Dimen_300=300.00;
 const Dimen_50=50.00;
 const Dimen_10=10.00;
 const Dimen_20=20.00;
+const Dimen_16=16.00;
+const Dimen_12=12.00;
+const Dimen_24=24.00;
+const Dimen_100=100.00;
