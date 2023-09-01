@@ -19,6 +19,15 @@ class PersonalInfoPage extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final FirebaseService _firebaseService = FirebaseService();
 
+  Map<String, dynamic> collectUserData() {
+    return {
+      'firstName': controller.firstNameController.text,
+      'lastName': controller.lastNameController.text,
+      'email': controller.emailController.text,
+
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +36,7 @@ class PersonalInfoPage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
       ),
       body: Form(
-        key: controller.formKey, // Add a form key
+        key: controller.formKey,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -69,11 +78,8 @@ class PersonalInfoPage extends StatelessWidget {
                 key: Key('nextButton'),
                 onPressed: () async {
                   if (controller.formKey.currentState!.validate()) {
-                    final success = await _firebaseService.uploadDataToFirestore(
-                      firstName: controller.firstNameController.text,
-                      lastName: controller.lastNameController.text,
-                      email: controller.emailController.text,
-                    );
+                    final userData = collectUserData();
+                    final success = await _firebaseService.uploadUserData(userData);
 
                     if (success) {
 
