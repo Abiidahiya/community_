@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:community/view_model/logout_all.dart';
+import 'package:community/utils/themes.dart';
 
 
 void main() async {WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: WizardPage(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      home: LoginScreen(),
     );
   }
 }
