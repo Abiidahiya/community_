@@ -20,10 +20,7 @@ class UserAddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(address1),
-        backgroundColor: Colors.blueAccent,
-      ),
+      appBar: null,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -101,6 +98,9 @@ class UserAddressPage extends StatelessWidget {
             ),
             SizedBox(height: Dimen_16),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.secondary, // Set the button color to primary color from your theme
+              ),
               onPressed: () {
                 // Navigate to the next step
                 wizardController.goToNextStep();

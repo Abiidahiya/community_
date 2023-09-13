@@ -7,6 +7,8 @@ import 'package:community/view_model/userwizard/personalinfo_controller.dart';
 import 'package:community/uicomponents/apptextformfield.dart';
 import 'package:community/utils/validators.dart';
 import 'package:community/uicomponents/customsizedbox.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:community/utils/firebase_services.dart';
 
 
 class PersonalInfoPage extends StatelessWidget {
@@ -16,14 +18,21 @@ class PersonalInfoPage extends StatelessWidget {
   PersonalInfoPage({super.key});
 
   final formKey = GlobalKey<FormState>();
+  final FirebaseService _firebaseService = FirebaseService();
+
+  Map<String, dynamic> collectUserData() {
+    return {
+      'firstName': controller.firstNameController.text,
+      'lastName': controller.lastNameController.text,
+      'email': controller.emailController.text,
+
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(personalinfomessage),
-        backgroundColor: Colors.blueAccent,
-      ),
+      appBar: null,
       body: Form(
         key: controller.formKey, // Add a form key
         child: SingleChildScrollView(
@@ -65,11 +74,28 @@ class PersonalInfoPage extends StatelessWidget {
               CustomSizedBox(),
               ElevatedButton(
                 key: Key('nextButton'),
-                onPressed: () {
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary, // Set the button color to primary color from your theme
+                ),
+                onPressed: () async {
                   if (controller.formKey.currentState!.validate()) {
-                    // Validation passed, navigate to the next step
+
+                    final userData = collectUserData();
+                    final success = await _firebaseService.uploadUserData(userData);
+
+                    if (success) {
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Data uploaded successfully'),
+                          duration: Duration(seconds: 2),
+                        ),
+                       );
                     wizardController.goToNextStep();
-                  }
+                  } else {
+
+                    }
+    }
                 },
                 child: const Text(next),
               ),

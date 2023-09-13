@@ -1,3 +1,4 @@
+import 'package:community/view/ui/userdatawizard/wizard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:community/utils/dimen.dart';
 import 'package:community/uicomponents/button/roundedbutton.dart';
@@ -27,12 +28,22 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             const Text(profileMessage, style: TextStyle(fontSize: largeFontSize)),
             const SizedBox(height: Dimen_20),
             RoundedButton(
+              btnName: editprofile,
+              textStyle: const TextStyle(color: white),
+              bgColor: Theme.of(context).colorScheme.secondary,
+              onPressed: () {
+                Get.to(WizardPage());
+              },
+            ),
+            const SizedBox(height: Dimen_150),
+            RoundedButton(
               btnName: logout,
               textStyle: const TextStyle(color: white),
-              bgColor: cyan,
+              bgColor: Theme.of(context).colorScheme.secondary,
               onPressed: () => _logoutController.logout(),
             ),
           ],

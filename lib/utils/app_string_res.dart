@@ -15,7 +15,7 @@ const historyPage='History';
 const historyMessage='History will be displayed here';
 const profilePage='Profile';
 const profileMessage='Profile info will be displayed here';
-const wizardpagemessage='Setup Wizard';
+const wizardpagemessage='Update Personal Info';
 const personalinfomessage='Personal Information';
 const firstname='First Name';
 const lastname='Last Name';
@@ -36,7 +36,7 @@ const town='Town/City';
 const state='State';
 const country='Country';
 const biopage='Bio Page';
-
+const editprofile='Edit Profile';
 
 
 
