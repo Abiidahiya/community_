@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 
 const continueWith="Continue with..";
 const welcome='Welcome to the vegan community';
@@ -27,6 +27,7 @@ const lastnameerror='Please enter a valid last name';
 
 const emailerror='Please enter a valid email';
 const address='Enter address manually';
+const addresserror='Please enter a valid address';
 const bio='Enter your bio';
 const bioerror='Please enter a valid bio';
 const submit='Submit';

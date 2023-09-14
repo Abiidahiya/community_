@@ -1,6 +1,8 @@
-import 'package:community/utils/dimen.dart';
-import 'package:community/view/ui/dashboardui_screen.dart';
+import 'package:community/utils/constants/dimen.dart';
+import 'package:community/utils/firebase_services.dart';
+import 'package:community/view/ui/appscreens/dashboardui_screen.dart';
 import 'package:community/view/ui/usernews/news_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community/view_model/userwizard/wizard_controller.dart';
@@ -15,6 +17,7 @@ class UserBioPage extends StatelessWidget {
   final UserBioController bioController = Get.put(UserBioController());
 
   final _formKey = GlobalKey<FormState>();
+  final FirebaseService _firebaseService = FirebaseService(); // Import your Firebase service
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +32,44 @@ class UserBioPage extends StatelessWidget {
               key: Key('bioField'),
               controller: bioController.userBioTextController,
               maxLines: 7,
-              label: bio,
+              label: 'Bio',
               validator: Validators.bioValidator,
             ),
             SizedBox(height: Dimen_100,),
             ElevatedButton(
               key: Key('submitButton'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.secondary, // Set the button color to primary color from your theme
+                backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  Get.to(DashboardUI());
+                  final user = FirebaseAuth.instance.currentUser;
 
+                  if (user != null) {
+                    final userFirebaseUid = user.uid;
+                    final userBio = bioController.userBioTextController.text;
+
+                    // Update the user's document in Firestore with the bio
+                    final success = await _firebaseService.updateUserBio(userFirebaseUid, userBio);
+
+                    if (success) {
+                      // Data uploaded successfully
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Bio uploaded successfully'),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                      Get.to(DashboardUI());
+                    } else {
+                      // Handle the case where data upload fails
+                    }
+                  } else {
+                    // Handle the case where no user is signed in
+                  }
                 }
               },
-              child: Text(submit),
+              child: Text('Submit'),
             ),
           ],
         ),

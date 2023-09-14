@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:community/utils/dimen.dart';
+import 'package:community/utils/constants/dimen.dart';
 
 class CustomSizedBox extends StatelessWidget {
   @override

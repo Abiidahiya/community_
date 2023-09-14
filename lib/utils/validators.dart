@@ -48,4 +48,17 @@ class Validators {
 
     return null;
   }
-}
+  static String? addressValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return addresserror; // Return an error message for empty input
+    }
+
+    final addressRegex = RegExp(r'^[a-zA-Z0-9\s.,!?()]*$');
+    if (!addressRegex.hasMatch(value)) {
+      return addresserror; // Return an error message for invalid format
+    }
+
+    return null; // Return null for a valid address
+  }
+ }
+

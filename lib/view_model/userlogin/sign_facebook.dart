@@ -1,5 +1,5 @@
 
-import 'package:community/view/ui/dashboardui_screen.dart';
+import 'package:community/view/ui/appscreens/dashboardui_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';

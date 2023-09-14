@@ -11,6 +11,8 @@ class UserAddressController extends GetxController {
   final RxString selectedCountry = 'Country 1'.obs;
   final RxBool isAddressManualEnabled = false.obs;
 
+  final formKey = GlobalKey<FormState>();
+
 
   final WizardTextEditingController manualAddressController = WizardTextEditingController();
   final FocusNode manualAddressFocus = FocusNode();

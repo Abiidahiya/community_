@@ -1,11 +1,11 @@
 import 'package:community/utils/app_string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:community/utils/color.dart';
-import 'package:community/utils/dimen.dart';
+import 'package:community/utils/constants/color.dart';
+import 'package:community/utils/constants/dimen.dart';
 import 'package:community/view_model/splash_controller.dart';
 import 'package:community/uicomponents/images.dart';
-import 'package:community/utils/font_size_constants.dart';
+import 'package:community/utils/constants/font_size_constants.dart';
 
 class SplashScreen extends StatelessWidget {
 

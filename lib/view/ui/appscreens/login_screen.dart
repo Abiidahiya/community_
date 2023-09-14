@@ -2,13 +2,13 @@
 
 
 import 'package:community/uicomponents/button/roundedbutton.dart';
-import 'package:community/utils/dimen.dart';
-import 'package:community/view_model/sign_google.dart';
+import 'package:community/utils/constants/dimen.dart';
+import 'package:community/view_model/userlogin/sign_google.dart';
 import 'package:flutter/material.dart';
-import '../../utils/app_string_res.dart';
-import 'package:community/utils/color.dart';
+import '../../../utils/app_string_res.dart';
+import 'package:community/utils/constants/color.dart';
 import 'package:community/uicomponents/images.dart';
-import 'package:community/view_model/sign_facebook.dart';
+import 'package:community/view_model/userlogin/sign_facebook.dart';
 import 'package:get/get.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
