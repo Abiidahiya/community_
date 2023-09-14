@@ -10,7 +10,9 @@ import 'package:community/uicomponents/apptextformfield.dart';
 import 'package:community/utils/validators.dart';
 import 'package:community/uicomponents/customsizedbox.dart';
 
+
 import 'package:community/utils/firebase_services.dart';
+
 
 
 class PersonalInfoPage extends StatelessWidget {
@@ -21,6 +23,7 @@ class PersonalInfoPage extends StatelessWidget {
 
   final formKey = GlobalKey<FormState>();
   final FirebaseService _firebaseService = FirebaseService();
+
   final FirebaseStorageService storageService = FirebaseStorageService();
 
   Map<String, dynamic> collectUserData() {
@@ -33,6 +36,7 @@ class PersonalInfoPage extends StatelessWidget {
     return {
       'displayName': displayName,
       'email': email,
+
     };
   }
 
@@ -41,7 +45,7 @@ class PersonalInfoPage extends StatelessWidget {
     return Scaffold(
       appBar: null,
       body: Form(
-        key: controller.formKey, // Add a form key
+        key: controller.formKey,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -81,6 +85,7 @@ class PersonalInfoPage extends StatelessWidget {
               CustomSizedBox(),
               ElevatedButton(
                 key: Key('nextButton'),
+
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
@@ -139,6 +144,7 @@ class PersonalInfoPage extends StatelessWidget {
                           duration: Duration(seconds: 2),
                         ),
                       );
+
                     }
                   }
                 },
