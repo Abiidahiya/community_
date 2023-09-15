@@ -1,4 +1,4 @@
-import 'package:community/appdatabase/model/firebase_storage_services.dart';
+import 'package:community/utils/firebase_storage_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +48,7 @@ class PersonalInfoPage extends StatelessWidget {
               CustomSizedBox(),
               ElevatedButton(
                 onPressed: controller.pickImage,
-                child: const Text(imagepicker_text),
+                child: const Text(imagepickertext),
               ),
               CustomSizedBox(),
               Obx(() {
@@ -67,7 +67,7 @@ class PersonalInfoPage extends StatelessWidget {
               AppTextFormField(
                 key: Key('lastNameField'),
                 controller: controller.lastNameController,
-                label: last_name,
+                label: lastname,
                 validator: Validators.lastNameValidator,
 
               ),
