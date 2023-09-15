@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community/appdatabase/model/firebase_services.dart';
 import 'package:community/utils/constants/dimen.dart';
 import 'package:community/appdatabase/model/firebase_services.dart';
 import 'package:community/view/ui/appscreens/dashboardui_screen.dart';
 import 'package:community/view/ui/usernews/news_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community/view_model/userwizard/wizard_controller.dart';
@@ -19,6 +21,8 @@ class UserBioPage extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
   final FirebaseService _firebaseService = FirebaseService(); // Import your Firebase service
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +74,7 @@ class UserBioPage extends StatelessWidget {
                   }
                 }
               },
-              child: Text('Submit'),
+              child: Text(submit),
             ),
           ],
         ),

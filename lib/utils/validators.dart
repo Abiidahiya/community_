@@ -2,7 +2,7 @@ import 'package:community/utils/app_string_res.dart';
 class Validators {
   static String? emailValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return email_error;
+      return blank_email_error;
     }
 
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,4}$');
@@ -14,7 +14,7 @@ class Validators {
   }
   static String? firstNameValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return first_name_error;
+      return blank_first_name_error;
     }
 
     final nameRegex = RegExp(r'^[a-zA-Z ]+$');
@@ -26,7 +26,7 @@ class Validators {
   }
   static String? lastNameValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return last_name_error;
+      return blank_last_name_error;
     }
 
     final nameRegex = RegExp(r'^[a-zA-Z ]+$');
@@ -38,7 +38,7 @@ class Validators {
   }
   static String? bioValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return bio_error;
+      return blank_bio_error;
     }
 
     final bioRegex = RegExp(r'^[a-zA-Z0-9\s.,!?()]*$');
@@ -50,7 +50,7 @@ class Validators {
   }
   static String? addressValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return address_error; // Return an error message for empty input
+      return blank_address_error; // Return an error message for empty input
     }
 
     final addressRegex = RegExp(r'^[a-zA-Z0-9\s.,!?()]*$');
