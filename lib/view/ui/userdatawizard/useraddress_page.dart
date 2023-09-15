@@ -1,6 +1,6 @@
 import 'package:community/utils/app_string_res.dart';
 import 'package:community/utils/constants/dimen.dart';
-import 'package:community/utils/firebase_services.dart';
+import 'package:community/appdatabase/model/firebase_services.dart';
 import 'package:community/utils/validators.dart';
 import 'package:community/view_model/userwizard/useraddress_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -96,6 +96,7 @@ class UserAddressPage extends StatelessWidget {
                 child: Text('Or'),
               ),
               TextFormField(
+                key: Key('addressfield'),
                 controller: controller.manualAddressController,
                 validator: Validators.addressValidator,
                 decoration: InputDecoration(
@@ -104,6 +105,7 @@ class UserAddressPage extends StatelessWidget {
               ),
               SizedBox(height: Dimen_16),
               ElevatedButton(
+                key: Key('nextButton'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),

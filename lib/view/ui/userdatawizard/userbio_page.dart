@@ -1,5 +1,6 @@
+import 'package:community/appdatabase/model/firebase_services.dart';
 import 'package:community/utils/constants/dimen.dart';
-import 'package:community/utils/firebase_services.dart';
+import 'package:community/appdatabase/model/firebase_services.dart';
 import 'package:community/view/ui/appscreens/dashboardui_screen.dart';
 import 'package:community/view/ui/usernews/news_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';

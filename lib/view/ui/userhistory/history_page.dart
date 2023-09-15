@@ -12,7 +12,7 @@ class HistoryPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          historyMessage,
+          history_Message,
           style: TextStyle(fontSize: largeFontSize),
         ),
       ),

@@ -10,3 +10,5 @@ const Dimen_16=16.00;
 const Dimen_12=12.00;
 const Dimen_24=24.00;
 const Dimen_100=100.00;
+const Dimen_500=500.00;
+const Dimen_400=400.00;
