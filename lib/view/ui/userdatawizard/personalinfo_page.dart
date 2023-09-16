@@ -1,4 +1,5 @@
 import 'package:community/appdatabase/model/firebase_storage_services.dart';
+import 'package:community/appdatabase/model/personalinfo_form_submission.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,62 +86,14 @@ class PersonalInfoPage extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 onPressed: () async {
-                  if (controller.formKey.currentState!.validate()) {
-                    final userData = collectUserData();
-                    String? userFirebaseUid; // Initialize to null
-
-                    final user = FirebaseAuth.instance.currentUser;
-                    if (user != null) {
-                      userFirebaseUid = user.uid;
-
-                      // Check if an image has been selected
-                      if (controller.selectedImage.value != null) {
-                        final photoURL = await _firebaseService.updateUserPhotoURL(controller.selectedImage.value!, userFirebaseUid);
-                        if (photoURL != null) {
-                          userData['photoURL'] = photoURL; // Update userData with photoURL
-                        } else {
-                          // Handle the case where image upload fails
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Failed to upload image'),
-                              duration: Duration(seconds: 2),
-                            ),
-                          );
-                          return; // Don't proceed if image upload fails
-                        }
-                      }
-
-                      // Pass the userFirebaseUid and updated userData to uploadUserData
-                      final success = await _firebaseService.uploadUserData(userData);
-
-                      if (success) {
-                        // Data uploaded successfully
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Data uploaded successfully'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                        wizardController.goToNextStep();
-                      } else {
-                        // Handle the case where data upload fails
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Failed to upload data'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                      }
-                    } else {
-                      // Handle the case where no user is signed in
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('No user is signed in'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    }
-                  }
+                  handleFormSubmission(
+                    context,
+                    controller.formKey,
+                    collectUserData,
+                    _firebaseService,
+                    wizardController,
+                    controller,
+                  );
                 },
                 child: const Text(next),
               ),

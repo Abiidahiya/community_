@@ -13,6 +13,7 @@ import 'package:community/view_model/userwizard/userbio_controller.dart';
 import 'package:community/utils/app_string_res.dart';
 import 'package:community/uicomponents/apptextformfield.dart';
 import 'package:community/utils/validators.dart';
+import 'package:community/appdatabase/model/userbio_form_submission.dart';
 
 
 class UserBioPage extends StatelessWidget {
@@ -47,32 +48,12 @@ class UserBioPage extends StatelessWidget {
                 backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
               onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  final user = FirebaseAuth.instance.currentUser;
-
-                  if (user != null) {
-                    final userFirebaseUid = user.uid;
-                    final userBio = bioController.userBioTextController.text;
-
-                    // Update the user's document in Firestore with the bio
-                    final success = await _firebaseService.updateUserBio(userFirebaseUid, userBio);
-
-                    if (success) {
-                      // Data uploaded successfully
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Bio uploaded successfully'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                      Get.to(DashboardUI());
-                    } else {
-                      // Handle the case where data upload fails
-                    }
-                  } else {
-                    // Handle the case where no user is signed in
-                  }
-                }
+                handleUserBioFormSubmission(
+                  context,
+                  _formKey,
+                  _firebaseService,
+                  bioController,
+                );
               },
               child: Text(submit),
             ),

@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:community/utils/constants/dimen.dart';
 import 'package:community/uicomponents/button/roundedbutton.dart';
 import 'package:community/view_model/userlogin/logout_all.dart';
+import 'package:flutter_wizard/flutter_wizard.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/src/painting/image_provider.dart';
 import 'package:community/uicomponents/images.dart';
+import 'package:community/view_model/userwizard/wizard_controller.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final LogoutController _logoutController = Get.find<LogoutController>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final UserWizardController wizardController = Get.put(UserWizardController());
   User? _user;
   Map<String, dynamic>? _userData;
 
@@ -58,6 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 textStyle: const TextStyle(color: Colors.white),
                 bgColor: Theme.of(context).colorScheme.secondary,
                 onPressed: () {
+                  wizardController.resetWizard();
                   Get.to(WizardPage());
                 },
               ),

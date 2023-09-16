@@ -10,6 +10,7 @@ import 'package:community/view_model/userwizard/wizard_controller.dart';
 
 import 'package:community/uicomponents/appdropdownformfield.dart';
 import 'package:community/uicomponents/customsizedbox.dart';
+import 'package:community/appdatabase/model/useraddress_form_submission.dart';
 
 
 
@@ -110,35 +111,15 @@ class UserAddressPage extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 onPressed: () async {
-                  // Validate the form using the formKey
-                  if (formKey.currentState!.validate()) {
-                    final user = FirebaseAuth.instance.currentUser;
-
-                    if (user != null) {
-                      final userFirebaseUid = user.uid;
-                      final userAddress = controller.manualAddressController.text;
-
-                      // Update the user's document in Firestore with the address
-                      final success = await _firebaseService.updateUserAddress(userFirebaseUid, userAddress);
-
-                      if (success) {
-                        // Data uploaded successfully
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Address uploaded successfully'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                        wizardController.goToNextStep();
-                      } else {
-                        // Handle the case where data upload fails
-                      }
-                    } else {
-                      // Handle the case where no user is signed in
-                    }
-                  }
+                  handleUserAddressSubmission(
+                    context,
+                    formKey,
+                    _firebaseService,
+                    wizardController,
+                    controller,
+                  );
                 },
-                child: Text('Next'),
+                child: Text(next),
               ),
             ],
           ),
