@@ -1,14 +1,18 @@
+import 'package:community/appdatabase/model/firebase_storage_services.dart';
+import 'package:community/appdatabase/model/personalinfo_form_submission.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community/view_model/userwizard/wizard_controller.dart';
 import 'package:community/utils/app_string_res.dart';
-import 'package:community/utils/dimen.dart';
+
 import 'package:community/view_model/userwizard/personalinfo_controller.dart';
 import 'package:community/uicomponents/apptextformfield.dart';
 import 'package:community/utils/validators.dart';
 import 'package:community/uicomponents/customsizedbox.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:community/utils/firebase_service.dart';
+
+import 'package:community/appdatabase/model/firebase_services.dart';
+
 
 class PersonalInfoPage extends StatelessWidget {
   final PersonalInfoController controller = Get.put(PersonalInfoController());
@@ -18,32 +22,34 @@ class PersonalInfoPage extends StatelessWidget {
 
   final formKey = GlobalKey<FormState>();
   final FirebaseService _firebaseService = FirebaseService();
+  final FirebaseStorageService storageService = FirebaseStorageService();
 
   Map<String, dynamic> collectUserData() {
-    return {
-      'firstName': controller.firstNameController.text,
-      'lastName': controller.lastNameController.text,
-      'email': controller.emailController.text,
+    final firstName = controller.firstNameController.text;
+    final lastName = controller.lastNameController.text;
+    final email = controller.emailController.text;
+    final displayName = '$firstName $lastName'; // Combine first and last name
 
+
+    return {
+      'displayName': displayName,
+      'email': email,
     };
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(personalinfomessage),
-        backgroundColor: Colors.blueAccent,
-      ),
+      appBar: null,
       body: Form(
-        key: controller.formKey,
+        key: controller.formKey, // Add a form key
         child: SingleChildScrollView(
           child: Column(
             children: [
               CustomSizedBox(),
               ElevatedButton(
                 onPressed: controller.pickImage,
-                child: const Text(imagepickertext),
+                child: const Text(imagepicker_text),
               ),
               CustomSizedBox(),
               Obx(() {
@@ -62,7 +68,7 @@ class PersonalInfoPage extends StatelessWidget {
               AppTextFormField(
                 key: Key('lastNameField'),
                 controller: controller.lastNameController,
-                label: lastname,
+                label: last_name,
                 validator: Validators.lastNameValidator,
 
               ),
@@ -76,26 +82,18 @@ class PersonalInfoPage extends StatelessWidget {
               CustomSizedBox(),
               ElevatedButton(
                 key: Key('nextButton'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
                 onPressed: () async {
-                  if (controller.formKey.currentState!.validate()) {
-                    final userData = collectUserData();
-                    final success = await _firebaseService.uploadUserData(userData);
-
-                    if (success) {
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Data uploaded successfully'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-
-
-                      wizardController.goToNextStep();
-                    } else {
-
-                    }
-                  }
+                  handleFormSubmission(
+                    context,
+                    controller.formKey,
+                    collectUserData,
+                    _firebaseService,
+                    wizardController,
+                    controller,
+                  );
                 },
                 child: const Text(next),
               ),

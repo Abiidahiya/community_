@@ -15,7 +15,7 @@ class WizardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(wizardpagemessage),
+        title: const Text(wizardpage_message),
       ),
       body: Obx(() => Column( // Wrap the whole column with Obx
         children: [
@@ -23,6 +23,7 @@ class WizardPage extends StatelessWidget {
             child: IndexedStack(
               index: wizardController.currentStep.value,
               children: [
+
                 PersonalInfoPage(),
                 UserAddressPage(),
                 UserBioPage(),

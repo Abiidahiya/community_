@@ -18,6 +18,9 @@ class UserWizardController extends GetxController {
     final pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
     return pickedImage;
   }
+  void resetWizard() {
+    currentStep.value = 0; // Set it to the initial step (0 in this case)
+  }
 
   void goToNextStep() {
     if (currentStep.value < 2) {

@@ -3,8 +3,10 @@ import 'package:community/view/ui/userhistory/history_page.dart';
 import 'package:community/view/ui/usermap/map_page.dart';
 import 'package:community/view/ui/usernews/news_page.dart';
 import 'package:community/view/ui/userprofile/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:community/view_model/userprofile/user_profile_data.dart';
 
 
 class DashboardUI extends StatelessWidget {

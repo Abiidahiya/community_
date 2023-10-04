@@ -1,4 +1,4 @@
-import 'package:community/utils/font_size_constants.dart';
+import 'package:community/utils/constants/font_size_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community/utils/app_string_res.dart';
@@ -12,7 +12,7 @@ class HistoryPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          historyMessage,
+          history_Message,
           style: TextStyle(fontSize: largeFontSize),
         ),
       ),

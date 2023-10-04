@@ -1,13 +1,11 @@
 
-import 'package:community/view/ui/dashboardui_screen.dart';
-import 'package:community/view/ui/login_screen.dart';
+import 'package:community/view/ui/appscreens/dashboardui_screen.dart';
+import 'package:community/view/ui/appscreens/login_screen.dart';
 import 'package:get/get.dart';
-import 'package:community/utils/constants.dart';
-import 'package:community/utils/constants.dart';
+import 'package:community/utils/constants/time_constants.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:community/view/ui/userprofile/profile_page.dart';
-import 'package:community/utils/constants.dart';
-import 'package:community/view/ui/login_screen.dart';
+
 
 
 
