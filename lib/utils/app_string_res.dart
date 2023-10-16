@@ -46,6 +46,7 @@ const edit_profile='Edit Profile';
 const user_search='Search';
 const user_search_message='Search user by Name';
 const user_search_result='Search results will appear here';
+const user_not_found='User Not Found, Please try again';
 
 
 

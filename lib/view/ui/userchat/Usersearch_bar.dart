@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:community/view_model/userchat/user_search_controller.dart';
 import 'package:community/utils/app_string_res.dart';
-import 'package:community/view_model/userchat/chat_screen_controller.dart';
+import 'package:community/utils/model_constants.dart';
+import 'package:get/get.dart';
 
-class UserSearchWidget extends StatefulWidget {
-  @override
-  _UserSearchWidgetState createState() => _UserSearchWidgetState();
-}
+import '../../../view_model/userchat/chat_screen_controller.dart';
+import '../../../view_model/userchat/user_search_controller.dart';
 
-class _UserSearchWidgetState extends State<UserSearchWidget> {
-  final UserSearchController _controller = UserSearchController();
+
+
+
+
+class UserSearchWidget extends StatelessWidget {
+  final UserSearchController _controller = Get.put(UserSearchController());
   final ChatScreenController _chatController = ChatScreenController();
 
   @override
@@ -29,13 +31,13 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
                 suffixIcon: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
-                    _controller.searchUsers(_controller.searchController.text);
-                    setState(() {});
+                    _controller.searchUsers(
+                        _controller.searchController.text);
                   },
                 ),
               ),
             ),
-            _buildSearchResults(),
+            Expanded(child: _buildSearchResults()),
           ],
         ),
       ),
@@ -43,29 +45,31 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
   }
 
   Widget _buildSearchResults() {
-    if (_controller.searchResults.isEmpty) {
-      return Center(
-        child: Text(user_search_result),
-      );
-    } else {
-      return Expanded(
-        child: ListView.builder(
+    return Obx(() {
+      if (_controller.searchResults.isEmpty) {
+        return Center(
+          child: Text(user_not_found),
+        );
+      } else {
+        return ListView.builder(
+          shrinkWrap: true,
           itemCount: _controller.searchResults.length,
           itemBuilder: (context, index) {
             final userDoc = _controller.searchResults[index];
+            // Customize based on your user document structure
             final uid = userDoc.id;
-            final photoURL = userDoc['photoURL'];
-            final displayName = userDoc['displayName'];
-            final email = userDoc['email'];
+            final photoURL = userDoc[profile_pic];
+            final displayName = userDoc[user_name];
+            final email = userDoc[user_email];
 
             return ListTile(
               leading: CircleAvatar(
-                backgroundImage: photoURL != null
-                    ? NetworkImage(photoURL)
-                    : null,
+                backgroundImage:
+                photoURL != null ? NetworkImage(photoURL) : null,
               ),
               title: Text(displayName),
               subtitle: Text(email),
+              // Customize as needed
               trailing: IconButton(
                 icon: Icon(Icons.chat),
                 onPressed: () {
@@ -77,8 +81,9 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
               },
             );
           },
-        ),
-      );
-    }
+        );
+      }
+    });
   }
 }
+

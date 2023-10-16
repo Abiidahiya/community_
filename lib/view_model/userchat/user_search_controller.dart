@@ -1,25 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:community/view/ui/userchat/chat_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:community/utils/model_constants.dart';
 
 
-class UserSearchController {
+
+class UserSearchController extends GetxController {
   final TextEditingController searchController = TextEditingController();
-  List<DocumentSnapshot> searchResults = [];
+  RxList<DocumentSnapshot> searchResults = <DocumentSnapshot>[].obs;
 
   Future<void> searchUsers(String query) async {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .where('displayName', isGreaterThanOrEqualTo: query)
+          .collection(user_collection)
+          .where(user_name, isGreaterThanOrEqualTo: query)
           .get();
-      searchResults = querySnapshot.docs;
+      searchResults.assignAll(querySnapshot.docs);
     } catch (e) {
-      print("Error searching users: $e");
+      print(user_search_error);
     }
   }
-
-
 }
