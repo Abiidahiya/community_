@@ -8,8 +8,15 @@ import 'package:community/utils/app_string_res.dart';
 class ChatRoom extends StatelessWidget {
   final Map<String, dynamic> userMap;
   final String chatRoomId;
+  final String otherUserName;
 
-  ChatRoom({required this.userMap, required this.chatRoomId});
+  ChatRoom({
+    required this.userMap,
+    required this.chatRoomId,
+    required this.otherUserName,
+      }
+     )
+  ;
 
   final TextEditingController _message = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -65,7 +72,7 @@ class ChatRoom extends StatelessWidget {
               return Container(
                 child: Column(
                   children: [
-                    Text(userMap['name'] ?? 'No Name'),
+                    Text(otherUserName),
                     Text(
                       userMap['status'] ?? 'No Status',
                       style: TextStyle(fontSize: 14),

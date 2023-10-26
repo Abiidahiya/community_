@@ -40,7 +40,7 @@ class ChatList extends StatelessWidget {
         if (_chatController.isLoading.value) {
           return CircularProgressIndicator();
         } else if (_chatController.hasError.value) {
-          return Text('${chat_id_error}${_chatController.errorMessage.value}');;
+          return Text('${chat_id_error}${_chatController.errorMessage.value}');
         } else if (_chatController.chatRoomIds.isEmpty) {
           return Text(no_chats_message);
         }
@@ -50,34 +50,38 @@ class ChatList extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
               title: FutureBuilder<Map<String, String>>(
-            future: _chatController.getOtherUserData(_chatController.chatRoomIds[index]),
-            builder: (context, userSnapshot) {
-              if (userSnapshot.connectionState == ConnectionState.waiting) {
-                return Text(loading);
-              } else if (userSnapshot.hasError) {
-                return Text('$user_data_error_message${userSnapshot.error}');;
-              } else if (!userSnapshot.hasData || userSnapshot.data == null) {
-                return Text(unknown_user);
-              }
+                future: _chatController.getOtherUserData(_chatController.chatRoomIds[index]),
+                builder: (context, userSnapshot) {
+                  if (userSnapshot.connectionState == ConnectionState.waiting) {
+                    return Text(loading);
+                  } else if (userSnapshot.hasError) {
+                    return Text('$user_data_error_message${userSnapshot.error}');
+                  } else if (!userSnapshot.hasData || userSnapshot.data == null) {
+                    return Text(unknown_user);
+                  }
 
-              String otherUserName = userSnapshot.data![user_name] as String;
-              String? otherUserPhotoURL = userSnapshot.data![profile_pic];
+                  String otherUserName = userSnapshot.data![user_name] as String;
+                  String? otherUserPhotoURL = userSnapshot.data![profile_pic];
 
-              return ListTile(
-                title: Text(otherUserName),
-                leading: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: otherUserPhotoURL != null && otherUserPhotoURL.isNotEmpty
-                      ? NetworkImage(otherUserPhotoURL)
-                      : AssetImage(Images.blankdp) as ImageProvider<Object>?,
-                ),
-                onTap: () {
-                  // Navigate to the ChatRoom with the selected chat room ID
-                  Get.to(() => ChatRoom(chatRoomId: _chatController.chatRoomIds[index], userMap: {}));
+                  return ListTile(
+                    title: Text(otherUserName),
+                    leading: CircleAvatar(
+                      radius: 25,
+                      backgroundImage: otherUserPhotoURL != null && otherUserPhotoURL.isNotEmpty
+                          ? NetworkImage(otherUserPhotoURL)
+                          : AssetImage(Images.blankdp) as ImageProvider<Object>?,
+                    ),
+                    onTap: () {
+                      // Navigate to the ChatRoom with the selected chat room ID and other user's display name
+                      Get.to(() => ChatRoom(
+                        chatRoomId: _chatController.chatRoomIds[index],
+                        userMap: {},
+                        otherUserName: otherUserName, // Pass the other user's display name
+                      ));
+                    },
+                  );
                 },
-              );
-            },
-            ),
+              ),
             );
           },
         );
@@ -85,5 +89,3 @@ class ChatList extends StatelessWidget {
     );
   }
 }
-
-

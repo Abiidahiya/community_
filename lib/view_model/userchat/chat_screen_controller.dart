@@ -12,7 +12,7 @@ class ChatScreenController extends GetxController {
   Future<void> goToChatScreen(String userId) async {
     try {
       String chatRoomId = await generateChatRoomId(userId);
-      Get.to(() => ChatRoom(chatRoomId: chatRoomId, userMap: {}));
+      Get.to(() => ChatRoom(chatRoomId: chatRoomId, userMap: {}, otherUserName: '',));
     } catch (e) {
       print(chat_screen_error);
     }
@@ -28,7 +28,7 @@ class ChatScreenController extends GetxController {
       // Check if the chat room document exists
       bool chatRoomExists = await doesChatRoomExist(chatRoomId);
 
-      // If the chat room document doesn't exist, create it
+      // If the chat room document doesn't  exist, create it
       if (!chatRoomExists) {
         await createChatRoomDocument(chatRoomId);
       }
