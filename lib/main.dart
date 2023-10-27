@@ -7,16 +7,17 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:community/view_model/userlogin/logout_all.dart';
 import 'package:community/utils/themes.dart';
+import 'package:community/view_model/nearbyusers/nearby_users_controller.dart';
 
 
 void main() async {WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 Get.put(LogoutController());
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -21,6 +21,14 @@ const chats_collection='chats';
 const message_sent='Message sent sucessfully';
 const no_user_data='No user data available';
 const send_message='send message';
+const nearby_user_error='Error exploring nearby users: \$e';
+const success_data_load='Data loading complete';
+const current_position_fetch='Fetching current location..';
+const user_query= 'Firestore for users...';
+const user_longitude='longitude';
+const user_latitude='latitude';
+
+
 
 
 
