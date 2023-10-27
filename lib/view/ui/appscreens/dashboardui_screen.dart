@@ -6,56 +6,59 @@ import 'package:community/view/ui/userprofile/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:community/view_model/userprofile/user_profile_data.dart';
+import 'package:community/view/ui/nearbyusers/nearby_users_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
+
+class DashboardController extends GetxController {
+  final PageController pageController = PageController();
+  final RxInt selectedItem = 0.obs;
+  final RxString userId = FirebaseAuth.instance.currentUser?.uid.obs ?? 'defaultUserId'.obs;
+}
 
 class DashboardUI extends StatelessWidget {
-  final _pageController = PageController();
-  final _selectedItem = 0.obs; // Use RxInt to make _selectedItem observable
-
-  DashboardUI({Key? key}) : super(key: key);
+  final DashboardController controller = Get.put(DashboardController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
         onPageChanged: (index) {
-          _selectedItem.value = index; // Update _selectedItem using RxInt
+          controller.selectedItem.value = index;
         },
-        controller: _pageController,
+        controller: controller.pageController,
         children: [
           NewsPage(),
+          NearbyUsersPage(),
           MapPage(),
           HistoryPage(),
           ProfilePage(),
-        ], // Provide the controller to PageView
+        ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: Obx(() => _buildBottomNavigationBar()),
     );
   }
 
   Widget _buildBottomNavigationBar() {
-    return Obx(() => BottomNavigationBar(
-      type: BottomNavigationBarType.fixed, // Set the type to fixed
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), label: newsPage),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_outlined), label: mapPage),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.access_alarm_rounded), label: historyPage),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_outlined), label: profilePage),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: newsPage),
+        BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userGroup), label: nearbyPage),
+        BottomNavigationBarItem(icon: Icon(Icons.account_balance_outlined), label: mapPage),
+        BottomNavigationBarItem(icon: Icon(Icons.access_alarm_rounded), label: historyPage),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: profilePage),
       ],
-      currentIndex: _selectedItem.value,
+      currentIndex: controller.selectedItem.value,
       onTap: (index) {
-        _selectedItem.value = index; // Update _selectedItem using RxInt
-        _pageController.animateToPage(
-          _selectedItem.value,
+        controller.selectedItem.value = index;
+        controller.pageController.animateToPage(
+          controller.selectedItem.value,
           duration: const Duration(milliseconds: 300),
           curve: Curves.linear,
         );
       },
-    ));
+    );
   }
 }

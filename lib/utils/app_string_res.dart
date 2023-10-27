@@ -53,7 +53,8 @@ const no_chats_message='No chats available.';
 const chat_id_error='Error fetching chat room IDs:';
 const chat_list_message='Inbox';
 const user_data_error_message='Unable to fetch user data';
-
+const nearbyPage='Nearby';
+const nearby_user_page='Nearby Users';
 
 
 

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:get/get.dart';
 import 'package:community/view/ui/userprofile/profile_page.dart';
+import 'package:geolocator/geolocator.dart';
 
 
 
@@ -34,7 +35,8 @@ Future<void> signInWithGoogle() async {
       final String userId = userCredential.user?.uid ?? '';
       print('Firebase UID: $userId');
 
-      final userRef = FirebaseFirestore.instance.collection('users').doc(userId);
+      final userRef =
+      FirebaseFirestore.instance.collection('users').doc(userId);
       final userDoc = await userRef.get();
 
       if (userDoc.exists) {
@@ -51,18 +53,26 @@ Future<void> signInWithGoogle() async {
           dataToUpdate['photoURL'] = photoURL;
         }
 
+        // Fetch and save user location
+        Position position = await Geolocator.getCurrentPosition();
+        dataToUpdate['latitude'] = position.latitude;
+        dataToUpdate['longitude'] = position.longitude;
+
         if (dataToUpdate.isNotEmpty) {
           await userRef.update(dataToUpdate);
-          print('User data updated with Google credentials');
+          print('User data updated with Google credentials and location');
         }
       } else {
-        // If the document doesn't exist, set it with Google credentials
+        // If the document doesn't exist, set it with Google credentials and location
+        Position position = await Geolocator.getCurrentPosition();
         await userRef.set({
           'displayName': displayName,
           'email': email,
+          'latitude': position.latitude,
+          'longitude': position.longitude,
           if (photoURL != null) 'photoURL': photoURL,
         });
-        print('User document created with Google credentials');
+        print('User document created with Google credentials and location');
       }
 
       print('User signed in with Google: $displayName');
